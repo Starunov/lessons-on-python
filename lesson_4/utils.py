@@ -5,7 +5,7 @@ TAG_VALUE = '<Value>'
 TAG_CLOSE_VALUE = '</Value>'
 TAG_NOMINAL = '<Nominal>'
 TAG_CLOSE_NOMINAL = '</Nominal>'
-DATE_FORMAT = '%d.%m.%Y %H:%M:%S'
+DATE_FORMAT = '%d.%m.%Y'
 
 
 def currency_rates(currency_code):
@@ -21,7 +21,7 @@ def currency_rates(currency_code):
         return
     # В ответе сервера response также имеется словарь headers, который содержит доп. информацию
     date_response = datetime.strptime(response.headers['Date'], '%a, %d %b %Y %H:%M:%S %Z') + timedelta(hours=3)  # utc+3 МСК
-    date_str = date_response.strftime('%d.%m.%Y')  # тип строка в формате дд.мм.гггг
+    date_str = date_response.strftime(DATE_FORMAT)  # тип строка в формате дд.мм.гггг
     text = response.text
     if currency_code not in text:
         return
