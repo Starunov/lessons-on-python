@@ -15,5 +15,6 @@ for root, dirnames, filenames in os.walk(find_in_folder):
             extensions.append(file_extension)
         result_dict[10 ** digits] = (file_quantity, extensions)
 
-with open(os.path.join(os.getcwd(), 'summary.json'), 'w', encoding='utf-8') as file:
+
+with open(f'{os.path.split(os.getcwd())[-1]}_summary.json', 'w', encoding='utf-8') as file:
     json.dump(result_dict, file)
